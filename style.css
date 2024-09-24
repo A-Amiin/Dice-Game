@@ -3,12 +3,11 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 html {
     font-size: 62.5%;
-    box-sizing: border-box;
 }
 
 body {
@@ -25,6 +24,7 @@ body {
 /* LAYOUT */
 main {
     position: relative;
+    width: 80%;
     width: 100rem;
     height: 60rem;
     background-color: rgba(255, 255, 255, 0.35);
@@ -46,16 +46,7 @@ main {
 }
 
 /* ELEMENTS */
-.name {
-    position: relative;
-    font-size: 4rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    word-spacing: 2px;
-    font-weight: 300;
-    margin-bottom: 1rem;
-}
-
+.name,
 .winner {
     position: relative;
     font-size: 4rem;
@@ -91,9 +82,9 @@ main {
 }
 
 .current {
+    border-radius: 0.9rem;
     background-color: #c7365f;
     opacity: 0.8;
-    border-radius: 9px;
     color: #fff;
     width: 65%;
     padding: 2rem;
@@ -109,10 +100,10 @@ main {
 }
 
 .current-score {
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 
-/* ABSOLUTE POSITIONED ELEMENTS */
+/* BUTTONS */
 .btn {
     position: absolute;
     left: 50%;
@@ -126,11 +117,9 @@ main {
     cursor: pointer;
     font-weight: 400;
     transition: all 0.2s;
-
     background-color: white;
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
-
     padding: 0.7rem 2.5rem;
     border-radius: 50rem;
     box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
@@ -164,11 +153,12 @@ main {
 }
 
 .dice {
+    height: 8rem;
+    margin: 2rem 0;
     position: absolute;
     left: 50%;
     top: 16.5rem;
     transform: translateX(-50%);
-    height: 10rem;
     box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -183,4 +173,72 @@ main {
 .player--winner .name {
     font-weight: 700;
     color: #c7365f;
+}
+
+/* Responsive Styles */
+
+/* Medium Screens */
+/* Medium Screens */
+@media (min-width: 400px) and (max-width: 790px) {
+    main {
+        flex-direction: column;
+        height: auto;
+        /* Allow height to adjust based on content */
+    }
+
+    .player {
+        flex: none;
+        /* Prevent flex from squishing the player sections */
+        padding: 5rem;
+        /* Adjust padding for smaller screens */
+    }
+
+    #dicee {
+        /* استخدام المعرف الصحيح */
+        top: 33.2rem;
+    }
+
+    .btn {
+        position: relative;
+        /* Change positioning to relative */
+        margin: 1rem 0;
+        /* Add margin between buttons */
+    }
+
+    .btn--new,
+    .btn--roll,
+    .btn--hold {
+        top: auto;
+        /* Reset position */
+    }
+}
+
+/* Small Screens */
+@media (max-width: 400px) {
+
+    .name,
+    .winner,
+    .score,
+    .current-label,
+    .current-score {
+        font-size: 2.5rem;
+        /* Adjust font sizes */
+    }
+
+    .btn {
+        font-size: 1.5rem;
+        /* Adjust button font size */
+        padding: 0.5rem 2rem;
+        /* Adjust button padding */
+    }
+
+    #dicee {
+        /* استخدام المعرف الصحيح */
+        top: 24.5rem;
+    }
+
+    .current {
+        width: 90%;
+        /* Make the current score section wider */
+    }
 }
